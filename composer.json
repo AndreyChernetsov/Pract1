@@ -1,5 +1,5 @@
 {
-    "name": "andrey/htdohs",
+    "name": "andreychernetsov/prac1",
     "description": "A powerful PHP MVC framework",
     "type": "project",
     "license": "MIT",
@@ -18,5 +18,5 @@
             "Src\\": "core/Src/",
             "": "app/"
         }
-    }
+    } 
 }

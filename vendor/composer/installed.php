@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'andrey/htdohs',
+        'name' => 'andreychernetsov/prac1',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'dcdd835e3f3041e5c0cc38ce91e40edaa50ed9a7',
+        'reference' => 'bf064497239ac82d1e46bb12a1fae7b0b2bb8ad4',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'andrey/htdohs' => array(
+        'andreychernetsov/prac1' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'dcdd835e3f3041e5c0cc38ce91e40edaa50ed9a7',
+            'reference' => 'bf064497239ac82d1e46bb12a1fae7b0b2bb8ad4',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
