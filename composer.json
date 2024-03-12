@@ -1,5 +1,5 @@
 {
-    "name": "AndreyChernetsov/Pract1",
+    "name": "andrey/htdohs",
     "description": "A powerful PHP MVC framework",
     "type": "project",
     "license": "MIT",
@@ -12,5 +12,11 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^7.4 | ^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "core/Src/",
+            "": "app/"
+        }
     }
 }
