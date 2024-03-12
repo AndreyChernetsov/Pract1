@@ -1,0 +1,16 @@
+{
+    "name": "AndreyChernetsov/Pract1",
+    "description": "A powerful PHP MVC framework",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AndreyChernetsov",
+            "email": "andcher24@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 | ^8.2"
+    }
+}
