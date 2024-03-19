@@ -12,11 +12,12 @@ class User extends Model implements IdentityInterface
 
    public $timestamps = false;
    protected $fillable = [
-       'name',
        'login',
-       'password'
+       'password',
+       'role'
    ];
 
+   //Шифровка пароля
    protected static function booted()
    {
        static::created(function ($user) {

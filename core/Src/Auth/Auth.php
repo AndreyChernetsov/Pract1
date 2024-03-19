@@ -57,5 +57,4 @@ class Auth
        Session::clear('id');
        return true;
    }
-
 }

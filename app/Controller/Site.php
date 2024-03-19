@@ -18,13 +18,14 @@ class Site
 
    public function hello(): string
    {
-       return new View('site.hello', ['message' => 'hello working']);
+       return new View('site.hello');
    }
 
    public function signup(Request $request): string
    {
       if ($request->method === 'POST' && User::create($request->all())) {
-          app()->route->redirect('/go');
+          return new View('site.signup', ['message' => 'Вы зарегистрировались!']);
+          app()->route->redirect('/signup');
       }
       return new View('site.signup');
    }   
@@ -35,7 +36,7 @@ class Site
     if ($request->method === 'GET') {
         return new View('site.login');
     }
-    //Если удалось аутентифицировать пользователя, то редирект
+    //Если удалось аутентифицировать пользователя, то редирект !!!
     if (Auth::attempt($request->all())) {
         app()->route->redirect('/hello');
     }
@@ -48,5 +49,29 @@ class Site
         Auth::logout();
         app()->route->redirect('/hello');
     }
-}
 
+    public function addsubscribers(): string
+    {
+        return new View('site.addsubscribers');
+    }
+
+    public function addphone(): string
+    {
+        return new View('site.addphone');
+    }
+
+    public function subphone(): string
+    {
+        return new View('site.subphone');
+    }
+
+    public function addroom(): string
+    {
+        return new View('site.addroom');
+    }
+
+    public function adddepartment(): string
+    {
+        return new View('site.adddepartment');
+    }
+}
