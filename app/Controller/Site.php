@@ -27,9 +27,9 @@ class Site
       if ($request->method === 'POST') {
    
           $validator = new Validator($request->all(), [
-              'name' => ['required'],
-              'login' => ['required', 'unique:users,login'],
-              'password' => ['required']
+              'login' => ['required'],
+              'password' => ['required', 'unique:users,password'],
+              'role' => ['required']
           ], [
               'required' => 'Поле :field пусто',
               'unique' => 'Поле :field должно быть уникально'
