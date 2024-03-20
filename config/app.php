@@ -13,9 +13,15 @@ return [
     'required' => \Validators\RequireValidator::class,
     'unique' => \Validators\UniqueValidator::class
    ],
-   
+
    'routeAppMiddleware' => [
     'trim' => \Middlewares\TrimMiddleware::class,
    ],
+
+   'routeAppMiddleware' => [
+    'trim' => \Middlewares\TrimMiddleware::class,
+    'specialChars' => \Middlewares\SpecialCharsMiddleware::class,
+   ],
+ 
  
 ];
