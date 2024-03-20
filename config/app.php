@@ -23,5 +23,10 @@ return [
     'specialChars' => \Middlewares\SpecialCharsMiddleware::class,
    ],
  
+   'routeAppMiddleware' => [
+    'csrf' => \Middlewares\CSRFMiddleware::class,
+    'trim' => \Middlewares\TrimMiddleware::class,
+    'specialChars' => \Middlewares\SpecialCharsMiddleware::class,
+   ],
  
 ];
