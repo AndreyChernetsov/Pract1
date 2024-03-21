@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\Post;
+use Model\Subdivition;
 use Src\View;
 use Src\Request;
 use Model\User;
@@ -15,6 +16,9 @@ class Site
     {
        $posts = Post::where('id', $request->id ?? 0)->get();
        return (new View())->render('site.post', ['posts' => $posts]);
+
+       $subdivitions = Subdivition::all();       
+       return (new View())->render('site.hello', ['subdivitions' => $subdivitions]);
     }
 
    public function hello(): string
@@ -28,8 +32,7 @@ class Site
    
           $validator = new Validator($request->all(), [
               'login' => ['required'],
-              'password' => ['required', 'unique:users,password'],
-              'role' => ['required']
+              'password' => ['required', 'unique:users,password']
           ], [
               'required' => 'Поле :field пусто',
               'unique' => 'Поле :field должно быть уникально'

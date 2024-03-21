@@ -12,4 +12,5 @@ Route::add('GET', '/addphone', [Controller\Site::class, 'addphone']);
 Route::add('GET', '/subphone', [Controller\Site::class, 'subphone']);
 Route::add('GET', '/addroom', [Controller\Site::class, 'addroom']);
 Route::add('GET', '/adddepartment', [Controller\Site::class, 'adddepartment']);
-Route::add('GET', '/adminhello', [Controller\Site::class, 'adminhello']);
+Route::add('GET', '/adminhello', [Controller\Site::class, 'adminhello'])
+    ->middleware('auth');

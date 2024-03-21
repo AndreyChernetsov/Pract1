@@ -14,7 +14,6 @@ class User extends Model implements IdentityInterface
    protected $fillable = [
        'login',
        'password',
-       'role'
    ];
 
    //Шифровка пароля
