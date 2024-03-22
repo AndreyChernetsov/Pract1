@@ -2,13 +2,18 @@
 
 namespace Controller;
 
-use Model\Post;
-use Model\Subdivition;
-use Src\View;
-use Src\Request;
-use Model\User;
+use Model\Room;
+use Model\Subdivision;
+use Model\Subscriber;
+use Model\Telephone;
 use Src\Auth\Auth;
+use Src\Protect;
+use Src\Request;
 use Src\Validator\Validator;
+use Src\View;
+use Model\Post;
+use Model\User;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class Site
 {
@@ -71,9 +76,57 @@ class Site
         app()->route->redirect('/hello');
     }
 
-    public function addsubscribers(): string
+    public function addsubscribers(Request $request): string
     {
-        return new View('site.addsubscribers');
+        $subscribers = Subscriber::all() ?? [];
+
+        if ($request->method === 'POST') {
+
+            switch (true) {
+                case Protect::check_string($model, "subscriber"):
+                    $validator = new Validator($request->all(), [
+                        'firstname' => ['required'],
+                        'lastname' => ['required'],
+                        'birth_date' => ['required']
+                    ], [
+                        'required' => 'Поле :field должно быть заполнено',
+                    ]);
+                    if ($validator->fails()) {
+                        return new View('site.addsubscribers', ["subdivisions" => $subdivisions, "subscribers" => $subscribers,
+                            "rooms" => $rooms, "rooms_types" => $rooms_types,
+                            "subdivisions_types" => $subdivisions_types, "telephones" => $telephones,
+                            "subscribersCount" => $subscribersCount,
+                            "subscriberErrors" => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+                    } else {
+                        Subscriber::create($request->all());
+                    }
+                    break;
+            }
+        }
+
+        if ($request->method === 'GET') {
+            $telephones = Telephone::all();
+            $subscriber = $request->all()['subscriber'] ?? "all";
+            $room = $request->all()['room'] ?? "all";
+            $subdivision = $request->all()['subdivision'] ?? "all";
+
+            if ($subscriber !== 'all' && (int)$subscriber) {
+                $telephones = $telephones->where('subscriber_id', $subscriber);
+            }
+            if ($room !== 'all' && (int)$room) {
+                $telephones = $telephones->where('room_num', $room);
+            }
+            if ($subdivision !== 'all' && (int)$subdivision) {
+                $telephones = $telephones->whereIn(
+                    'room_num',
+                    Room::where('subdivision_id', $subdivision)->pluck('room_num')->toArray()
+                );
+            }
+            $subscribersCount = count(array_unique($telephones->pluck('subscriber_id')->toArray()));
+        }
+
+        return new View('site.addsubscribers', ["subscribers" => $subscribers,
+        "subscribersCount" => $subscribersCount ?? 0]);
     }
 
     public function addphone(): string

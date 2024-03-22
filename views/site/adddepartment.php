@@ -16,11 +16,6 @@
             width: 250px;"> 
 <ol>
     <label>Абоненты:</label>
-   <?php
-        foreach ($posts as $post) {
-            echo '<li>' . $post->title . '</li>';
-        }
-   ?>
 </ol>
     <button>Подсчитать</button>
 </form>

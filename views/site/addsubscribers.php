@@ -1,22 +1,23 @@
-<h2>Добавить абонента</h2>
-<form method="post" style="display: flex; 
-            flex-direction: column;
-            width: 250px;">
-    <label style="margin-bottom: 10px">Индекс <input type="password" name="password"></label>
-    <label style="margin-bottom: 10px">Фамилия <input type="text" name="name"></label>
-    <label style="margin-bottom: 10px">Имя <input type="text" name="login"></label>
-    <label style="margin-bottom: 10px">Отчество <input type="password" name="password"></label>
-    <label style="margin-bottom: 10px">Дата рождения <input type="date" name="date"></label>
-    <label style="margin-bottom: 10px">Помещение
-    <select type="text" name="name">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select></label>
-    <label style="margin-bottom: 10px">Вид подразделения <select type="text" name="name">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select></label>
-    <button>Добавить</button>
+<form method="post" class="flex flex-col bg-gray-400 items-center p-12 w-96 rounded-xl gap-5">
+            <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+            <input name="model" type="hidden" value="<?= \Src\Protect::encode_string("subscriber") ?>" />
+            <h2>Абонент</h2>
+            <p class="text-red-800">
+                <span><?=$subscriberErrors ?? ""?></span>
+            </p>
+            <p>
+                <label>Имя <br><input type="text" name="firstname" class="border-4 rounded-xl w-80 h-8 px-2 border-gray-200" /><label>
+            </p>
+            <p>
+                <label>Фамилия <br><input type="text" name="lastname" class="border-4 rounded-xl w-80 h-8 px-2 border-gray-200" /><label>
+            </p>
+            <p>
+                <label>Отчество <br><input type="text" name="patronymic" class="border-4 rounded-xl w-80 h-8 px-2 border-gray-200" /><label>
+            </p>
+            <p>
+                <label>Дата рождения <br><input type="date" name="birth_date" class="border-4 rounded-xl w-36 h-8 px-2 border-gray-200" /><label>
+            </p>
+            <p>
+                <input type="submit" value="Создать" class="px-12 py-3 rounded-xl bg-gray-200 mt-5" />
+            </p>
 </form>

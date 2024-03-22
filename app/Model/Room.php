@@ -5,15 +5,16 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subdivision extends Model
+class Room extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
     protected $fillable = [
+        'room_num',
         'name',
-        'type'
+        'type',
+        'subdivision_id'
     ];
-
 }
