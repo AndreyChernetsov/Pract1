@@ -8,7 +8,7 @@
    <title>PRAC1</title>
 </head>
 <body>
-<header>
+<header style="text-align: center;">
     <h1>Внутренняя телефонная связь</h1>
    <nav>
        <?php
